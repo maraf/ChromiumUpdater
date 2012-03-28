@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromiumUpdater", "ChromiumUpdater\ChromiumUpdater.csproj", "{B0F4DA1C-0E9E-430D-AE39-04BB77D985D8}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{A5B39850-0F4E-499B-A1C9-EE76FFB8D6CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0F4DA1C-0E9E-430D-AE39-04BB77D985D8}.Debug|x86.ActiveCfg = Debug|x86
+		{B0F4DA1C-0E9E-430D-AE39-04BB77D985D8}.Debug|x86.Build.0 = Debug|x86
+		{B0F4DA1C-0E9E-430D-AE39-04BB77D985D8}.Release|x86.ActiveCfg = Release|x86
+		{B0F4DA1C-0E9E-430D-AE39-04BB77D985D8}.Release|x86.Build.0 = Release|x86
+		{A5B39850-0F4E-499B-A1C9-EE76FFB8D6CB}.Debug|x86.ActiveCfg = Debug
+		{A5B39850-0F4E-499B-A1C9-EE76FFB8D6CB}.Release|x86.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

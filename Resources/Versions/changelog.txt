@@ -1,0 +1,6 @@
+1.0.2
+ - Async file extracting (no UI blocking)
+
+1.0.1
+ - Auto run support
+ - Minor issues fixed

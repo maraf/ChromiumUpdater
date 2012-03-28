@@ -1,0 +1,100 @@
+﻿<Window x:Class="ChromiumUpdater.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ChromiumUpdater"
+        x:Name="winMain" Title="Chromium Updater" Height="370" Width="525" ResizeMode="NoResize" Closing="winMain_Closing">
+    <Border Style="{StaticResource border}">
+        <Grid Margin="0,5">
+            <DockPanel Background="White">
+                <Grid DockPanel.Dock="Bottom">
+                    <StackPanel Style="{StaticResource formItem}" Orientation="Horizontal">
+                        <Button x:Name="btnConfirm" Content="Confirm" Click="btnConfirm_Click" Padding="4,2" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource formItem}" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button x:Name="btnRestoreConfig" Content="Restore defaults" Click="btnRestoreConfig_Click" Padding="4,2" />
+                    </StackPanel>
+                </Grid>
+                <StackPanel>
+                    <StackPanel Style="{StaticResource formItem}">
+                        <Label Content="Installation folder:" />
+                        <TextBox Text="{Binding Model.InstallationFolder}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource formItem}">
+                        <Label Content="Last build url:" />
+                        <TextBox Text="{Binding Model.LastBuildUrl}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource formItem}">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Download build url:" />
+                            <Label Content="(Must contains {0} as a placeholder for revision)" Foreground="Gray" FontWeight="Normal" />
+                        </StackPanel>
+                        <TextBox>
+                            <TextBox.Text>
+                                <Binding Path="Model.DownloadBuildUrl">
+                                    <Binding.ValidationRules>
+                                        <local:UrlPlaceHolderValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Style="{StaticResource formItem}">
+                            <Label Content="File name:" />
+                            <TextBox Text="{Binding Model.DownloadFileName}" />
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource formItem}" Grid.Column="1">
+                            <Label Content="Change log:" />
+                            <TextBox Text="{Binding Model.DownloadChangeLog}" />
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Style="{StaticResource formItem}">
+                        <Label Content="Auto check:" />
+                        <CheckBox IsChecked="{Binding Model.AutoCheckAndDownload}" Content="Automaticaly check for newer version after app start" />
+                        <CheckBox IsChecked="{Binding Model.AutoRun}" Content="Automaticaly run after user logged in" />
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+            <DockPanel x:Name="dpnMain" Background="White">
+                <StackPanel Style="{StaticResource formItem}" DockPanel.Dock="Top">
+                    <ProgressBar Height="30" Value="{Binding Model.Status}" />
+                </StackPanel>
+                <Grid DockPanel.Dock="Bottom">
+                    <StackPanel Style="{StaticResource formItem}" Orientation="Horizontal">
+                        <Button x:Name="btnStartDownload" Click="btnStartDownload_Click" Padding="4,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="16" Source="/ChromiumUpdater;component/Images/Download.png" Margin="0,0,4,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                                <TextBlock Text="Start download" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnStopDownload" Click="btnStopDownload_Click" IsEnabled="False" Margin="5,0,0,0" Padding="4,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="16" Source="/ChromiumUpdater;component/Images/Cancel.png" Margin="0,0,4,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                                <TextBlock Text="Stop download" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnCheckVersion" Click="btnCheckVersion_Click" Margin="5,0,0,0" Padding="4,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="16" Source="/ChromiumUpdater;component/Images/Refresh.png" Margin="0,0,4,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                                <TextBlock Text="Check version" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource formItem}" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button x:Name="btnConfig" Click="btnConfig_Click" Padding="4,2">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="16" Source="/ChromiumUpdater;component/Images/Config.png" Margin="0,0,4,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                                <TextBlock Text="Configuration" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <TextBox x:Name="tbxLog" AcceptsReturn="True" IsReadOnly="True" Style="{StaticResource formItem}" />
+            </DockPanel>
+        </Grid>
+    </Border>
+</Window>
