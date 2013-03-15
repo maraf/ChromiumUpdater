@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net;
+using System.Diagnostics;
+using Path = System.IO.Path;
 
 namespace ChromiumUpdater
 {
@@ -129,7 +131,13 @@ namespace ChromiumUpdater
                             break;
                         case LogType.FileExtracted:
                             Log("New version applied.");
-                            //TODO: Run ...
+
+                            if (Manager.Model.Model.AutoRunChromium)
+                                Process.Start(Path.Combine(Manager.Model.Model.InstallationFolder, Path.GetFileNameWithoutExtension(Manager.Model.Model.DownloadFileName), "chrome.exe"));
+
+                            if (Manager.Model.Model.AutoCloseUpdater)
+                                Close();
+
                             break;
                     }
                     btnStartDownload.IsEnabled = true;

@@ -56,6 +56,8 @@
                         <Label Content="Auto check:" />
                         <CheckBox IsChecked="{Binding Model.AutoCheckAndDownload}" Content="Automaticaly check for newer version after app start" />
                         <CheckBox IsChecked="{Binding Model.AutoRun}" Content="Automaticaly run after user logged in" />
+                        <CheckBox IsChecked="{Binding Model.AutoRunChromium}" Content="Run Chromium after download" />
+                        <CheckBox IsChecked="{Binding Model.AutoCloseUpdater}" Content="Close updater after download" />
                     </StackPanel>
                 </StackPanel>
             </DockPanel>

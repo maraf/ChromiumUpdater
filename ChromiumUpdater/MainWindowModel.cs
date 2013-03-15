@@ -29,6 +29,8 @@ namespace ChromiumUpdater
         private string localVersion;
         private bool autoCheckAndDownload = false;
         private bool autoRun = false;
+        private bool autoRunChromium = false;
+        private bool autoCloseUpdater = false;
 
         private int status = 0;
 
@@ -109,6 +111,26 @@ namespace ChromiumUpdater
             {
                 autoRun = value;
                 FirePropertyChanged("AutoRun");
+            }
+        }
+
+        public bool AutoRunChromium
+        {
+            get { return autoRunChromium; }
+            set
+            {
+                autoRunChromium = value;
+                FirePropertyChanged("AutoRunChromium");
+            }
+        }
+
+        public bool AutoCloseUpdater
+        {
+            get { return autoCloseUpdater; }
+            set
+            {
+                autoCloseUpdater = value;
+                FirePropertyChanged("AutoCloseUpdater");
             }
         }
 
